@@ -1,0 +1,16 @@
+{
+  "id": "/",
+  "name": "VoxelCraft Offline",
+  "short_name": "VoxelCraft",
+  "description": "Jogo voxel 3D instalável e jogável offline.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#172b3d",
+  "theme_color": "#172b3d",
+  "icons": [
+    {"src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
+  ]
+}

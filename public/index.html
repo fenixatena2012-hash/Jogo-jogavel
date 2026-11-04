@@ -1,1 +1,55 @@
-
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#172b3d">
+<meta name="description" content="Explore, mine e construa em um mundo de blocos 3D.">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<title>VoxelCraft Offline</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#86c8ef;font-family:system-ui,Arial;color:#fff;touch-action:none;overscroll-behavior:none}
+#game{display:block;width:100vw;height:100dvh;touch-action:none}
+#overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(#10243aaa,#10243aaa);z-index:10;padding:16px}
+.panel{width:min(450px,94vw);padding:24px;border:1px solid #ffffff55;border-radius:18px;background:#142334f2;box-shadow:0 18px 60px #0008;text-align:center}
+h1{margin:0 0 7px;font-size:clamp(26px,5vw,40px);letter-spacing:1px}.sub{color:#c5d6e7;margin:0 0 18px}
+button{border:0;border-radius:10px;padding:12px 19px;background:#69b84d;color:#10200d;font-weight:850;font-size:15px;cursor:pointer;touch-action:none}
+#help{font-size:12px;color:#d4e0ec;line-height:1.6;margin-top:14px}
+#install{display:none;margin:0 auto 12px;background:#e5edf5;color:#142334}
+#hud{position:fixed;inset:0;pointer-events:none;display:none;user-select:none;-webkit-user-select:none}
+#cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:25px;text-shadow:0 1px 3px #000}
+#hotbar{position:absolute;bottom:max(9px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;gap:3px;padding:4px;background:#101820bb;border:1px solid #ffffff66;border-radius:8px;pointer-events:auto}
+.slot{width:clamp(34px,6vh,48px);height:clamp(34px,6vh,48px);border:2px solid #ffffff55;border-radius:5px;display:grid;place-items:center;font-size:10px;color:#fff;text-shadow:0 1px 2px #000}
+.slot.active{border:3px solid #fff;transform:translateY(-3px)}
+.swatch{width:clamp(16px,3vh,23px);height:clamp(16px,3vh,23px);border:1px solid #ffffff88}
+#hint{position:absolute;top:max(8px,env(safe-area-inset-top));left:8px;padding:6px 9px;background:#101820aa;border-radius:7px;font-size:11px}
+#toast{position:absolute;top:45px;left:50%;transform:translateX(-50%);background:#101820cc;padding:6px 10px;border-radius:7px;opacity:0;transition:opacity .2s;font-size:12px}
+#mobile{display:none;position:absolute;inset:0;pointer-events:none}
+#stickBase{position:absolute;left:20px;bottom:64px;width:116px;height:116px;border-radius:50%;background:#15253577;border:2px solid #ffffff88;pointer-events:auto;touch-action:none}
+#stick{position:absolute;left:34px;top:34px;width:44px;height:44px;border-radius:50%;background:#ffffffbb;border:2px solid white;box-shadow:0 2px 8px #0005}
+#actions{position:absolute;right:13px;bottom:58px;display:flex;flex-direction:column;gap:8px;align-items:flex-end;pointer-events:auto}
+.action{width:78px;height:46px;border-radius:12px;background:#172b3ddd;border:1px solid #ffffff99;color:white;font-size:11px;font-weight:900;padding:4px}
+.action.primary{background:#559b43ee}
+#lookArea{position:absolute;right:0;top:45px;bottom:145px;width:56%;pointer-events:auto;touch-action:none}
+#landscape{display:none;position:fixed;inset:0;z-index:20;background:#142334;color:white;align-items:center;justify-content:center;text-align:center;padding:25px;font-weight:700}
+@media (orientation:portrait) and (max-width:900px){#landscape{display:flex}}
+@media (pointer:coarse){#mobile{display:block}#hint{max-width:46%;font-size:10px}}
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+<div id="overlay"><div class="panel">
+<h1>VOXELCRAFT</h1><p class="sub">Um mundo de blocos para explorar e construir.</p>
+<button id="install">INSTALAR NO CELULAR</button><br>
+<button id="play">JOGAR</button>
+<div id="help">Gire o celular para a horizontal.<br>Joystick para andar · Arraste à direita para olhar<br>Use os botões para pular, minerar e construir.<br><br>O jogo funciona offline depois do primeiro carregamento.</div>
+</div></div>
+<div id="hud"><div id="cross">+</div><div id="hint">Joystick: andar · Arraste à direita: olhar</div><div id="toast"></div><div id="lookArea"></div>
+<div id="mobile"><div id="stickBase"><div id="stick"></div></div><div id="actions">
+<button class="action" id="jump">PULAR</button><button class="action primary" id="mine">MINERAR</button><button class="action" id="place">COLOCAR</button>
+</div></div><div id="hotbar"></div></div>
+<div id="landscape">↻<br><br>Gire seu celular para jogar na horizontal.</div>
+<script src="/game.bundle.js"></script>
+</body></html>
